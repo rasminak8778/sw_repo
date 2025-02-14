@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_task_form_view_inherit_git" model="ir.ui.view">
+        <field name="name">project.task.form.view.inherit.git</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <button name="action_create_github_issue"
+                        string="Create Issue"
+                        type="object"
+                        class="btn-primary"
+                />
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="git_branch_id"
+                       placeholder="Select Git Branch"
+                       domain="[('id', 'in', available_git_branches)]"
+                       options="{'no_create': True, 'no_open': True}"
+                />
+                <field name="available_git_branches" widget="many2many_tags"
+                       placeholder="Available GitHub Repositories"
+                       invisible="1"
+                       options="{'no_create': True, 'no_open': True}"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='sub_tasks_page']"
+                   position="after">
+                <page string="Github Issues" name="git_issues">
+                    <field name="git_issues_ids">
+                        <tree create="0" delete="0" editable="bottom">
+                            <field name="title" readonly="1"/>
+                            <field name="issue_url" widget="url" readonly="1"/>
+                            <field name="state" readonly="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_form_view_inherit_git" model="ir.ui.view">
+        <field name="name">project.form.view.inherit.git</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_start']" position="after">
+                <field name="github_repo_id" placeholder="Select Git Repository"
+                    options="{'no_create': True, 'no_open': True}"/>
+                <field name="available_github_repos" widget="many2many_tags"
+                    placeholder="Available GitHub Repositories"
+                    options="{'no_create': True, 'no_open': True}" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

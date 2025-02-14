@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+
+access_project_git_repo,project.git.repo,model_project_git_repo,base.group_user,1,1,1,1
+access_project_git_branch,project.git.branch,model_project_git_branch,base.group_user,1,1,1,1
+access_git_issue,git.issue,model_git_issue,base.group_user,1,1,1,1
+access_task_issue_wizard,task.issue.wizard,model_task_issue_wizard,base.group_user,1,1,1,1
