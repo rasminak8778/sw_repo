@@ -4,7 +4,7 @@ from odoo import fields, models
 
 class GitIssue(models.Model):
     _name = 'git.issue'
-    _description = 'Git Issue'
+    _description = 'Git Issuzze'
     _rec_name = 'title'
 
     title = fields.Char('Title', required=True)
