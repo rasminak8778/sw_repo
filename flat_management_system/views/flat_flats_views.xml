@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="flat_flats_tree_view" model="ir.ui.view">
+        <field name="model">flat.flats</field>
+        <field name="arch" type="xml">
+            <tree string="flat">
+                <field name="name"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="flat_flats_form_view" model="ir.ui.view">
+        <field name="model">flat.flats</field>
+        <field name="arch" type="xml">
+            <form string="flat_flats">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="amount"/>
+                        <field name="flat_id" widget="many2one_tags"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                    <field name="activity_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="flat_search_view" model="ir.ui.view">
+        <field name="name">Flat Search</field>
+        <field name="model">flat.flats</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="All" name="all"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="flat_creation_action" model="ir.actions.act_window">
+        <field name="name">Flat management</field>
+        <field name="res_model">flat.flats</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_all': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No flats Created
+            </p>
+            <p>
+                Track and Create Flats
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="flat_main_menu" name="Flats"/>
+    <menuitem id="flat_flats_menu" name="Flat"
+              action="flat_creation_action" sequence='30'
+              parent="flat_management_system.flat_main_menu"/>
+    <!--    <menuitem id="runbot_instance_menu_configuration" name="Configuration"-->
+    <!--              sequence='100'-->
+    <!--              parent="runbot.runbot_cloud_main_menu"/>-->
+</odoo>
